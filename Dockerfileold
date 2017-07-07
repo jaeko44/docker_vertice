@@ -1,0 +1,28 @@
+FROM  alelindq/ubuntu-systemd
+MAINTAINER Megam systems  <info@megam.io>
+
+ENV DEB_VERSION 1.5.2
+ENV RELEASE testing
+ENV DEBIAN_FRONTEND noninteractive
+
+ENV ONE_URL https://get.megam.io/repo/$DEB_VERSION/ubuntu/16.04/$RELEASE xenial $RELEASE
+
+#ENTRYPOINT ["/sbin/init"]
+RUN buildDeps=' \
+         nsqd \
+      ' \
+     set -x \
+     && apt-get update \
+     && apt-get -y install software-properties-common  git nano apt-transport-https wget  apt-utils  ca-certificates netcat-openbsd \
+     && apt-add-repository "deb [arch=amd64] $ONE_URL" \
+     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9B46B611 \
+     && apt-get update \
+     && apt-get -y install $buildDeps \
+
+# COPY start.sh  /
+    && systemctl start nsqadmin
+
+ EXPOSE  9000 8000 4150 4151 4160 4161  4171
+
+
+CMD ["/sbin/init"]
