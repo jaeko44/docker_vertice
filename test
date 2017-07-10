@@ -1,2 +1,0 @@
-environment = MEGAM_HOME=/var/lib/megam
-environment = MEGAM_HOME='/var/lib/megam'
