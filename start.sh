@@ -9,6 +9,10 @@ while read Iface Destination Gateway Flags RefCnt Use Metric Mask MTU Window IRT
 		break
 done < /proc/net/route
 
+   mkdir -p /var/lib/megam 
+   cd  /var/lib/megam
+   git clone https://github.com/megamsys/abcdsh.git
+
    echo "[program:vertice]" >> /etc/supervisor/conf.d/vertice.conf && \
    echo "environment = MEGAM_HOME='/var/lib/megam'" >> /etc/supervisor/conf.d/vertice.conf && \
    echo "command=/usr/share/megam/vertice/bin/vertice -v start" >> /etc/supervisor/conf.d/vertice.conf && \
