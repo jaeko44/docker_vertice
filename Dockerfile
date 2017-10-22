@@ -2,12 +2,12 @@ FROM ubuntu:16.04
 MAINTAINER DET-IO PTy. Ltd. <hello@virtengine.com>
 
 ENV DEB_VERSION 1.5.2
-ENV RELEASE testing
+ENV RELEASE stable
 ENV DEBIAN_FRONTEND noninteractive
 ENV REPO_URL https://get.virtengine.com/repo/$DEB_VERSION/ubuntu/16.04/$RELEASE xenial $RELEASE
 
 RUN buildDeps=' \
-         virtengine nsqd virtenginegateway\
+         virtengine nsqd virtenginegateway virtenginenilavu\
       ' \
      set -x \
      && apt-get update \
