@@ -17,7 +17,7 @@ RUN buildDeps=' \
      && apt-get install -y openjdk-8-jre-headless \
      && apt-get -y --allow-unauthenticated install $buildDeps
 
-EXPOSE 7777 4150 4151 4160 4161  4171 9000
-COPY start.sh  /
+EXPOSE 80 8080 7777 4150 4151 4160 4161 4171 9000
 
+COPY start.sh  /
 CMD  ["/start.sh"]
